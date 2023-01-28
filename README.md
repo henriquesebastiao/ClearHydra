@@ -1,5 +1,5 @@
-# ClearHydra
-#### Uma ferramenta simples que roda o Hydra por trás dos panos 🐲
+# ClearHydra 🐲
+#### Uma ferramenta simples que roda o Hydra por trás dos panos.
 
 ### Recursos:
 - Realizar ataques brute force com os segunintes protocolos: **HTTP**, **SSH**, **Telnet** e **FTP**;
