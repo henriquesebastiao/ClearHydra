@@ -1,4 +1,4 @@
-import os, time
+import os, time, re
 
 # Cores
 colors = {
@@ -13,6 +13,14 @@ colors = {
     'underline': '\033[4m',
     'end': '\033[0m'
 }
+
+regex = "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$"
+
+def check_ip(ip):
+    if(re.search(regex, ip)):
+        return True
+    else:
+        return False
 
 # Função para limpar a tela
 def clear_screen():
@@ -90,8 +98,22 @@ while True:
         time.sleep(1.3)
         clear_screen()
 
-# Solicita o IP do alvo
-target_ip = input('Informe o IP do alvo: ').strip()
+# Verifica se o IP é válido
+while True:
+    clear_screen()
+    print_banner()
+    target_ip = input('Informe o IP do alvo: ').strip()
+    
+    if __name__ == '__main__':
+        if check_ip(target_ip):
+            clear_screen()
+            print_banner()
+            break
+        else:
+            print('\nEndereço IP inválido!')
+            print('Tente novamente...\n')
+            time.sleep(1.3)
+
 wordlist_users = input('Informe o caminho da wordlist de usuários: ').strip()
 wordlist_passwords = input('Informe o caminho da wordlist de senhas: ').strip()
 
