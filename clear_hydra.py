@@ -16,8 +16,16 @@ colors = {
 
 regex = "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$"
 
+# Função para verificar se o IP é válido
 def check_ip(ip):
     if(re.search(regex, ip)):
+        return True
+    else:
+        return False
+
+# Função para verificar se o diretório existe
+def directory_exists(directory):
+    if os.path.isdir(directory):
         return True
     else:
         return False
@@ -114,8 +122,25 @@ while True:
             print('Tente novamente...\n')
             time.sleep(1.3)
 
-wordlist_users = input('Informe o caminho da wordlist de usuários: ').strip()
-wordlist_passwords = input('Informe o caminho da wordlist de senhas: ').strip()
+# Solicita o caminho da wordlist de usuários
+while True:
+    wordlist_users = input('Informe o caminho da wordlist de usuários: ').strip()
+    if directory_exists(wordlist_users):
+        break
+    else:
+        print('\nDiretório não encontrado!')
+        print('Tente novamente...\n')
+        time.sleep(1.3)
+
+# Solicita o caminho da wordlist de senhas
+while True:
+    wordlist_passwords = input('Informe o caminho da wordlist de senhas: ').strip()
+    if directory_exists(wordlist_passwords):
+        break
+    else:
+        print('\nDiretório não encontrado!')
+        print('Tente novamente...\n')
+        time.sleep(1.3)
 
 clear_screen()
 print_banner()
