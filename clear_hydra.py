@@ -36,7 +36,11 @@ def clear_screen():
 
 # Função para imprimir o banner
 def print_banner():
-    print('\033[0;34mClearHydra v0.1\033[0m')
+    with open('banner.txt', 'r') as banner:
+        for line in banner:
+            print(line, end='')
+    print('\n')
+    print(time.strftime('%d/%m/%Y', time.localtime()) + ' ' + time.strftime('%H:%M:%S', time.localtime()))
     print('Desenvolvidor por: Henrique Sebastião')
     print('https://github.com/henriquesebastiao/ClearHydra\n')
 
