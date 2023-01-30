@@ -32,7 +32,10 @@ def directory_exists(directory):
 
 # Função para limpar a tela
 def clear_screen():
-    os.system('clear')
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
 
 # Função para imprimir o banner
 def print_banner():
@@ -129,6 +132,8 @@ while True:
 # Solicita o caminho da wordlist de usuários
 while True:
     wordlist_users = input('Informe o caminho da wordlist de usuários: ').strip()
+    
+    os.path.abspath(wordlist_users)
     if directory_exists(wordlist_users):
         break
     else:
