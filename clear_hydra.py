@@ -16,29 +16,29 @@ colors = {
 
 regex = "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$"
 
-# Função para verificar se o IP é válido
 def check_ip(ip):
+    """Função para verificar se o IP é válido"""
     if(re.search(regex, ip)):
         return True
     else:
         return False
 
-# Função para verificar se o diretório existe
 def directory_exists(directory):
+    """Função para verificar se o diretório existe"""
     if os.path.isdir(directory):
         return True
     else:
         return False
 
-# Função para limpar a tela
 def clear_screen():
+    """Função para limpar a tela"""
     if os.name == 'nt':
         os.system('cls')
     else:
         os.system('clear')
 
-# Função para imprimir o banner
 def print_banner():
+    """Função para imprimir o banner"""
     with open('banner.txt', 'r') as banner:
         for line in banner:
             print(line, end='')
@@ -48,8 +48,8 @@ def print_banner():
 https://github.com/henriquesebastiao/ClearHydra\n
 ''')
 
-# Função para retornar a porta padrão do protocolo
 def default_port(protocol):
+    """Função para retornar a porta padrão do protocolo"""
     match protocol:
         case '1':
             return '80'
