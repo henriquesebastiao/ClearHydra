@@ -44,30 +44,33 @@ def print_banner():
             print(line, end='')
     print('\n')
     print(time.strftime('%d/%m/%Y', time.localtime()) + ' ' + time.strftime('%H:%M:%S', time.localtime()))
-    print('Desenvolvidor por: Henrique Sebastião')
-    print('https://github.com/henriquesebastiao/ClearHydra\n')
+    print('''Desenvolvidor por: Henrique Sebastião
+https://github.com/henriquesebastiao/ClearHydra\n
+''')
 
 # Função para retornar a porta padrão do protocolo
 def default_port(protocol):
-    if protocol == '1':
-        return '80'
-    elif protocol == '2':
-        return '22'
-    elif protocol == '3':
-        return '23'
-    elif protocol == '4':
-        return '21'
+    match protocol:
+        case '1':
+            return '80'
+        case '2':
+            return '22'
+        case '3':
+            return '23'
+        case '4':
+            return '21'
 
 # Escolha do protocolo
 while True:
     clear_screen()
     print_banner()
 
-    print('Escolha o protocolo para o ataque brute force:\n')
-    print('1 - HTTP')
-    print('2 - SSH')
-    print('3 - Telnet')
-    print('4 - FTP\n')
+    print('''Escolha o protocolo para o ataque brute force:\n
+1 - HTTP
+2 - SSH
+3 - Telnet
+4 - FTP
+''')
 
     protocol_name = ''
     chosen_option = input('Escolha uma opção: ').strip()
@@ -76,14 +79,15 @@ while True:
         clear_screen()
         
         # Define o nome do protocolo
-        if chosen_option == '1':
-            protocol_name = 'http-get'
-        elif chosen_option == '2':
-            protocol_name = 'ssh'
-        elif chosen_option == '3':
-            protocol_name = 'telnet'
-        elif chosen_option == '4':
-            protocol_name = 'ftp'
+        match chosen_option:
+            case '1':
+                protocol_name = 'http-get'
+            case '2':
+                protocol_name = 'ssh'
+            case '3':
+                protocol_name = 'telnet'
+            case '4':
+                protocol_name = 'ftp'
         break
     else:
         print('\nOpção inválida!')
@@ -93,25 +97,27 @@ while True:
 # Escolha da porta
 while True:
     print_banner()
-    print('1 - Porta padrão')
-    print('2 - Porta específica\n')
+    print('''1 - Porta padrão
+2 - Porta específica\n
+''')
     port_option = input('Escolha uma opção: ').strip()
     
-    if port_option == '1':
-        port = default_port(chosen_option)
-        clear_screen()
-        print_banner()
-        break
-    elif port_option == '2':
-        clear_screen()
-        print_banner()
-        port = input('Digite a porta: ').strip()
-        break
-    else:
-        print('\nOpção inválida!')
-        print('Tente novamente...\n')
-        time.sleep(1.3)
-        clear_screen()
+    match port_option:
+        case '1':
+            port = default_port(chosen_option)
+            clear_screen()
+            print_banner()
+            break
+        case '2':
+            clear_screen()
+            print_banner()
+            port = input('Digite a porta: ').strip()
+            break
+        case _:
+            print('\nOpção inválida!')
+            print('Tente novamente...\n')
+            time.sleep(1.3)
+            clear_screen()
 
 # Verifica se o IP é válido
 while True:
